@@ -1,0 +1,56 @@
+<section class="heading-section">
+    <h1 class="title is-1 has-text-centered">YAPILACAKLAR LİSTESİ</h1>
+</section>
+<div class="container add-todo-box-container">
+    <div class="add-todo-box">
+        <form>
+            <h2 class="title is-5">Yeni Görev</h2>
+            <div class="field is-grouped" style="margin: 0">
+              <p class="control is-expanded">
+                <input class="input"[(ngModel)]="todo.name" name="todo.name" type="text" placeholder="Yeni bir görev giriniz...">
+              </p>
+              <p class="control">
+                <!-- <input disabled=[todos.id] placeholder="Todo ID" [(ngModel)]="todos.id" name="todos.id" type="text">-->
+                  <button (click)="addTodo()" type="submit" class="button alt-gradient-button">
+                    <span class="material-icons">
+                      add
+                      </span>
+                      Ekle
+                  </button>     
+              </p>
+            </div>
+        </form>
+  </div>
+</div>
+<ul *ngIf="todos.length > 0; else NoTodo ">
+<li *ngFor="let a of todos">
+  <section class="section" >
+    <div class="container">
+       <div class="todos-list">
+        <div class="todo-item completed">
+          <div class="check-box">
+            <i class="material-icons">check</i>
+          </div>        
+          <div class="text">
+            <span>{{a.name}}</span>   
+            <button (click)="editTodo(a)" type="submit" class="button-duzenle">
+              <span class="material-icons">
+                create
+                </span>
+                Düzenle
+            </button>      
+            <!-- <button (click)="complateTodo(a.id)">Tamamla</button> -->
+              <button (click)="deleteTodo(a.id)" type="submit" class="button-sil">
+                <span class="material-icons">
+                  delete
+                  </span>
+                  Sil
+              </button>    
+          </div>
+        </div>
+      </div> 
+    </div>
+  </section>
+</li>
+</ul>
+<ng-template #NoTodo>Herhangi bir todo bulunmamaktadır...</ng-template>
